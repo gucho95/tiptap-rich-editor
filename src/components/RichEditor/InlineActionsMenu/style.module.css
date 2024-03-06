@@ -1,0 +1,19 @@
+.inlineMenuWrapper {
+  @apply p-2 bg-purple-100 shadow-2xl transition-all rounded-lg shadow-purple-200/50;
+}
+
+.inlineMenu {
+  @apply flex gap-2;
+}
+
+.menuButton {
+  @apply p-1 bg-purple-200 rounded-lg hover:bg-purple-100;
+}
+
+.menuButtonSelected {
+  @apply bg-purple-300 hover:bg-purple-300;
+}
+
+.menuButtonIcon {
+  @apply w-6 h-6 block;
+}
