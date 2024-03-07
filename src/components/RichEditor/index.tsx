@@ -4,14 +4,37 @@ import classes from "./style.module.css";
 import InlineActionsMenu from "./InlineActionsMenu";
 import BlockActionsMenu from "./BlockActionsMenu";
 import Underline from "@tiptap/extension-underline";
+import Placeholder from "@tiptap/extension-placeholder";
+import Image from "@tiptap/extension-image";
+import Youtube from "@tiptap/extension-youtube";
 
-const extensions = [StarterKit, Underline];
+const PlaceholderExtension = Placeholder.configure({
+  placeholder: "Type something...",
+  emptyEditorClass: classes.placeholder,
+  considerAnyAsEmpty: true,
+  showOnlyWhenEditable: true,
+});
 
-const content = `<p>Lorem Ipsum <u>is</u> simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><p>Lorem Ipsum <u>is</u> simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`;
+const YoutubeExtension = Youtube.configure({
+  disableKBcontrols: true,
+  modestBranding: false,
+  controls: false,
+});
+
+const extensions = [
+  StarterKit,
+  PlaceholderExtension,
+  Underline,
+  Image,
+  YoutubeExtension,
+];
+
+const content = "";
 
 const RichEditor = () => {
   return (
     <EditorProvider
+      autofocus="start"
       editorProps={{ attributes: { class: classes.editor } }}
       extensions={extensions}
       content={content}

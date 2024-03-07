@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.18",
+    "@tiptap/extension-image": "^2.2.4",
+    "@tiptap/extension-placeholder": "^2.2.4",
     "@tiptap/extension-underline": "^2.2.4",
+    "@tiptap/extension-youtube": "^2.2.4",
     "@tiptap/pm": "^2.2.4",
     "@tiptap/react": "^2.2.4",
     "@tiptap/starter-kit": "^2.2.4",

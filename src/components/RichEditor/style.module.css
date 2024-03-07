@@ -1,3 +1,15 @@
 .editor {
-  @apply focus:outline-none  leading-8;
+  @apply focus:outline-none  leading-10;
+}
+
+.placeholder {
+  @apply text-gray-500;
+}
+
+.placeholder::before {
+  @apply content-[attr(data-placeholder)] float-left h-0 pointer-events-none;
+}
+
+.editor img.ProseMirror-selectednode {
+  @apply !opacity-30;
 }

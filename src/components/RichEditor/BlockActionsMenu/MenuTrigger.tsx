@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { FC, MouseEvent } from "react";
 import AddIcon from "./Icons/Add";
+import classes from "./style.module.css";
 
 type MenuTriggerProps = {
   menuOpen: boolean;
@@ -25,10 +26,7 @@ const MenuTrigger: FC<MenuTriggerProps> = ({
   return (
     <button
       onMouseDown={onMouseDown}
-      className={clsx(
-        "w-8 h-8 -mt-1.5 mr-2 bg-purple-200 text-black/50 fill-current block rounded-full transition-all",
-        menuOpen ? "rotate-45" : "rotate-0"
-      )}
+      className={clsx(classes.menuTrigger, menuOpen ? "rotate-45" : "rotate-0")}
     >
       <AddIcon />
     </button>
