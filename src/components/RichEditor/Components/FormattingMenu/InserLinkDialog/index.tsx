@@ -28,7 +28,7 @@ const InsertLinkDialog: FC<InsertLinkDialogProps> = ({
   const [value, setValue] = useState("https://example.com");
 
   return (
-    <Dialog {...dialogProps}>
+    <Dialog {...dialogProps} className="max-w-md">
       <Input value={selectedText} disabled={true} className="mb-2" />
       <Input
         value={value}

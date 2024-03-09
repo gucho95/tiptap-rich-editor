@@ -6,11 +6,13 @@ import InsertYoutubeEmbedDialog from "./InsertYoutubeEmbedDialog";
 import Menu from "../FormattingMenu/Menu";
 import { getBlockActions } from "./Actions";
 import classes from "./style.module.css";
+import InsertGifDialog from "./InsertGifDialog";
 
 const BlockActionsMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [imageDialogOpen, setImageDialogOpen] = useState(false);
   const [youtubeDialogOpen, setYoutubeDialogOpen] = useState(false);
+  const [gifDialogOpen, setGifDialogOpen] = useState(false);
 
   const { editor } = useCurrentEditor();
   const isEditorFocused = editor?.isFocused;
@@ -33,6 +35,7 @@ const BlockActionsMenu = () => {
       onMenuClose,
       setImageDialogOpen,
       setYoutubeDialogOpen,
+      setGifDialogOpen,
     });
   }, []);
 
@@ -107,6 +110,18 @@ const BlockActionsMenu = () => {
         onSuccess={(src: string) => {
           setYoutubeDialogOpen(false);
           editor?.chain().focus().setYoutubeVideo({ src }).run();
+        }}
+      />
+
+      <InsertGifDialog
+        dialogProps={{
+          title: "Insert GIF",
+          isOpen: gifDialogOpen,
+          onClose: () => setGifDialogOpen(false),
+        }}
+        onSuccess={(src: string) => {
+          setGifDialogOpen(false);
+          editor?.chain().focus().setImage({ src }).run();
         }}
       />
     </div>

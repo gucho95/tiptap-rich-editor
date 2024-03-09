@@ -7,10 +7,12 @@ export const getBlockActions = ({
   onMenuClose,
   setImageDialogOpen,
   setYoutubeDialogOpen,
+  setGifDialogOpen,
 }: {
   onMenuClose: () => void;
   setImageDialogOpen: Dispatch<SetStateAction<boolean>>;
   setYoutubeDialogOpen: Dispatch<SetStateAction<boolean>>;
+  setGifDialogOpen: Dispatch<SetStateAction<boolean>>;
 }) => [
   {
     name: "image",
@@ -36,6 +38,7 @@ export const getBlockActions = ({
     icon: <GifIcon />,
     onSelect: () => {
       onMenuClose();
+      setGifDialogOpen(true);
     },
   },
 ];

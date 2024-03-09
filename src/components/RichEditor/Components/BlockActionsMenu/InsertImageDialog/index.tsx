@@ -53,10 +53,6 @@ const InsertImageDialog: FC<InsertImageDialogProps> = ({
 
   return (
     <Dialog {...dialogProps} className={classes.insertImageDialog}>
-      <Button onClick={dialogProps?.onClose} className={classes.closeButton}>
-        X
-      </Button>
-
       <Input
         value={value}
         onChange={(e) => setValue(e.target.value)}
@@ -65,6 +61,9 @@ const InsertImageDialog: FC<InsertImageDialogProps> = ({
       />
 
       <GridGallery images={images} onSelect={onSuccess} loading={loading} />
+      <Button onClick={dialogProps?.onClose} className={classes.closeButton}>
+        X
+      </Button>
     </Dialog>
   );
 };

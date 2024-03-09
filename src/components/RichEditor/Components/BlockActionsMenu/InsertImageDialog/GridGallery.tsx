@@ -30,7 +30,7 @@ const GridGallery: FC<GridGalleryProps> = ({ images, onSelect, loading }) => {
   return (
     <div className={classes.gridContainer}>
       {images?.map((image) => (
-        <div className={clsx(classes.gridItem, "group")}>
+        <div className={clsx(classes.gridItem, "group")} key={image.id}>
           <div
             className={clsx(classes.gridItemOverlay, "group-hover:opacity-100")}
           >
@@ -38,11 +38,7 @@ const GridGallery: FC<GridGalleryProps> = ({ images, onSelect, loading }) => {
               Click to select
             </Button>
           </div>
-          <img
-            key={image.id}
-            src={image.urls.thumb}
-            className={classes.gridItemImg}
-          />
+          <img src={image.urls.thumb} className={classes.gridItemImg} />
         </div>
       ))}
     </div>

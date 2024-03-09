@@ -15,7 +15,7 @@ const InsertYoutubeEmbedDialog: FC<InsertYoutubeEmbedDialogProps> = ({
   const [value, setValue] = useState("https://youtu.be/u1TP7RosLww");
 
   return (
-    <Dialog {...dialogProps}>
+    <Dialog {...dialogProps} className="max-w-md">
       <Input
         value={value}
         onChange={(e) => setValue(e.target.value)}
