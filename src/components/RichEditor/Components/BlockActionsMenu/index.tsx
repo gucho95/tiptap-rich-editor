@@ -1,44 +1,11 @@
-import { Editor, FloatingMenu, useCurrentEditor } from "@tiptap/react";
-import classes from "./style.module.css";
-import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
+import { FloatingMenu, useCurrentEditor } from "@tiptap/react";
+import { useEffect, useMemo, useState } from "react";
 import MenuTrigger from "./MenuTrigger";
-import ImageIcon from "./Icons/Image";
-import YoutubeIcon from "./Icons/Youtube";
 import InsertImageDialog from "./InsertImageDialog";
 import InsertYoutubeEmbedDialog from "./InsertYoutubeEmbedDialog";
 import Menu from "../FormattingMenu/Menu";
-
-const getBlockActions = ({
-  editor,
-  onMenuClose,
-  setImageDialogOpen,
-  setYoutubeDialogOpen,
-}: {
-  editor: Editor;
-  onMenuClose: () => void;
-  setImageDialogOpen: Dispatch<SetStateAction<boolean>>;
-  setYoutubeDialogOpen: Dispatch<SetStateAction<boolean>>;
-}) => [
-  {
-    name: "image",
-    title: "Insert Image by URL",
-    icon: <ImageIcon />,
-    onSelect: () => {
-      onMenuClose();
-      setImageDialogOpen(true);
-    },
-    selected: editor.isActive("image"),
-  },
-  {
-    name: "youtube embed",
-    title: "Insert Youtube Embed",
-    icon: <YoutubeIcon />,
-    onSelect: () => {
-      onMenuClose();
-      setYoutubeDialogOpen(true);
-    },
-  },
-];
+import { getBlockActions } from "./Actions";
+import classes from "./style.module.css";
 
 const BlockActionsMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -62,15 +29,12 @@ const BlockActionsMenu = () => {
   };
 
   const actions = useMemo(() => {
-    return editor
-      ? getBlockActions({
-          editor,
-          onMenuClose,
-          setImageDialogOpen,
-          setYoutubeDialogOpen,
-        })
-      : [];
-  }, [editor]);
+    return getBlockActions({
+      onMenuClose,
+      setImageDialogOpen,
+      setYoutubeDialogOpen,
+    });
+  }, []);
 
   // Close menu on selection update
   useEffect(() => {
@@ -102,10 +66,7 @@ const BlockActionsMenu = () => {
 
   return (
     <div>
-      <FloatingMenu
-        tippyOptions={{ placement: "left-start" }}
-        className={classes.formattingMenu}
-      >
+      <FloatingMenu tippyOptions={{ placement: "left-start" }}>
         <MenuTrigger
           menuOpen={menuOpen}
           onMenuClose={onMenuClose}
@@ -114,10 +75,15 @@ const BlockActionsMenu = () => {
         />
       </FloatingMenu>
 
-      <FloatingMenu tippyOptions={{ placement: "right-start" }}>
-        <div className="-mt-1.5 -ml-3 bg-white">
-          {menuOpen && isEditorFocused && <Menu actions={actions} />}
-        </div>
+      <FloatingMenu
+        tippyOptions={{ placement: "right-start" }}
+        className={classes.menuWrapper}
+      >
+        {menuOpen && isEditorFocused && (
+          <div className="p-2">
+            <Menu actions={actions} />
+          </div>
+        )}
       </FloatingMenu>
 
       <InsertImageDialog

@@ -40,7 +40,7 @@ const FormattingMenu = () => {
         className={clsx(classes.formattingMenuWrapper, {
           "opacity-0": linkDialogVisible,
         })}
-        tippyOptions={{ maxWidth: "100%" }}
+        tippyOptions={{ maxWidth: "100%", placement: "auto" }}
         shouldShow={({ editor }) => shoudShow(editor.state, editor.view)}
       >
         <Menu actions={actions} />
