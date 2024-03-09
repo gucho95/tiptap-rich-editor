@@ -1,15 +1,16 @@
 import MenuItem from "./MenuItem";
 import classes from "./style.module.css";
-import { InlineAction } from "../types";
+import { FormattingMenuAction } from "../../types";
 import { FC } from "react";
 
 type MenuProps = {
-  actions: InlineAction[];
+  actions: FormattingMenuAction[];
 };
 
 const Menu: FC<MenuProps> = ({ actions }) => {
+  console.log("actions", actions);
   return (
-    <div className={classes.inlineMenu}>
+    <div className={classes.formattingMenu}>
       {actions.map((action) => (
         <MenuItem key={action.name} {...action} />
       ))}

@@ -9,13 +9,11 @@ import {
   useState,
 } from "react";
 import MenuTrigger from "./MenuTrigger";
-import Menu from "../InlineActionsMenu/Menu";
-import H3Icon from "./Icons/H3";
-import H4Icon from "./Icons/H4";
 import ImageIcon from "./Icons/Image";
 import YoutubeIcon from "./Icons/Youtube";
 import InsertImageDialog from "./InsertImageDialog";
 import InsertYoutubeEmbedDialog from "./InsertYoutubeEmbedDialog";
+import Menu from "../FormattingMenu/Menu";
 
 const getBlockActions = ({
   editor,
@@ -28,26 +26,6 @@ const getBlockActions = ({
   setImageDialogOpen: Dispatch<SetStateAction<boolean>>;
   setYoutubeDialogOpen: Dispatch<SetStateAction<boolean>>;
 }) => [
-  {
-    name: "h3",
-    title: "Format to H3",
-    icon: <H3Icon />,
-    onSelect: () => {
-      editor.chain().focus().toggleHeading({ level: 3 }).run();
-      onMenuClose();
-    },
-    selected: editor.isActive("h3"),
-  },
-  {
-    name: "h4",
-    title: "Format to H4",
-    icon: <H4Icon />,
-    onSelect: () => {
-      editor.chain().focus().toggleHeading({ level: 4 }).run();
-      onMenuClose();
-    },
-    selected: editor.isActive("h4"),
-  },
   {
     name: "image",
     title: "Insert Image by URL",

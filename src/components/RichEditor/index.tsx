@@ -1,9 +1,9 @@
-import { EditorProvider } from "@tiptap/react";
-import InlineActionsMenu from "./Components/InlineActionsMenu";
-import BlockActionsMenu from "./Components/BlockActionsMenu";
-import classes from "./style.module.css";
-import extensions from "./Extensions";
 import { useEffect, useState } from "react";
+import { EditorProvider } from "@tiptap/react";
+import BlockActionsMenu from "./Components/BlockActionsMenu";
+import FormattingMenu from "./Components/FormattingMenu";
+import extensions from "./Extensions";
+import classes from "./style.module.css";
 
 const content = "";
 
@@ -28,7 +28,7 @@ const RichEditor = () => {
       }}
       onCreate={onCreate}
     >
-      <InlineActionsMenu />
+      <FormattingMenu />
       <BlockActionsMenu />
     </EditorProvider>
   );
