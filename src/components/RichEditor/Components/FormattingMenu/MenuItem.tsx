@@ -29,7 +29,7 @@ const MenuItem: FC<MenuItemProps> = ({
 
       <button
         className={clsx(classes.menuButton, {
-          [classes.menuButtonSelected]: selected?.(),
+          [classes.menuButtonSelected]: selected && selected?.(),
         })}
         onMouseDown={onMouseDown}
         title={title}

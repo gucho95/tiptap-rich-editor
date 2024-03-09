@@ -37,7 +37,6 @@ const getBlockActions = ({
       onMenuClose();
       setYoutubeDialogOpen(true);
     },
-    selected: editor.isActive("youtube"),
   },
 ];
 

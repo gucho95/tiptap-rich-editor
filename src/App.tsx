@@ -4,7 +4,7 @@ import RichEditor from "./components/RichEditor";
 function App() {
   return (
     <Fragment>
-      <div className="w-full sticky top-0 bg-purple-200 h-16 flex justify-between py-2 px-4 z-10">
+      <div className="w-full sticky top-0 bg-purple-200 h-16 flex justify-between py-2 px-4 z-10 gap-x-2">
         <div className="w-20 rounded-xl bg-purple-300"></div>
         <div className="w-80 rounded-xl bg-purple-300"></div>
         <div className="flex space-x-2">
