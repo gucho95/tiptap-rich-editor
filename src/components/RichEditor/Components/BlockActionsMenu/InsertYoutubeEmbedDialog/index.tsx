@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
-import Button from "../../../Button";
-import Input from "../../../Input";
-import Dialog, { DialogProps } from "../../../Dialog";
+import Button from "../../../../Button";
+import Dialog, { DialogProps } from "../../../../Dialog";
+import Input from "../../../../Input";
 
 interface InsertYoutubeEmbedDialogProps {
   dialogProps: Omit<DialogProps, "children">;

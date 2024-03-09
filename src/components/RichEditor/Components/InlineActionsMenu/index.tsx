@@ -5,7 +5,9 @@ import classes from "./style.module.css";
 import BoldIcon from "./Icons/Bold";
 import ItalicIcon from "./Icons/Italic";
 import UnderlineIcon from "./Icons/Underline";
-import { InlineAction } from "../types";
+import { InlineAction } from "../../types";
+import BulListIcon from "./Icons/BulList";
+import NumListIcon from "./Icons/NumList";
 
 const getInlineActions = (editor: Editor): InlineAction[] => [
   {
@@ -27,6 +29,20 @@ const getInlineActions = (editor: Editor): InlineAction[] => [
     title: "Format Underline",
     icon: <UnderlineIcon />,
     onSelect: () => editor.chain().focus().toggleMark("underline").run(),
+    selected: editor.isActive("underline"),
+  },
+  {
+    name: "bulleted-list",
+    title: "Toggle Bullete List",
+    icon: <BulListIcon />,
+    onSelect: () => editor.chain().focus().toggleBulletList().run(),
+    selected: editor.isActive("underline"),
+  },
+  {
+    name: "ordered-list",
+    title: "Toggle Ordered List",
+    icon: <NumListIcon />,
+    onSelect: () => editor.chain().focus().toggleOrderedList().run(),
     selected: editor.isActive("underline"),
   },
 ];

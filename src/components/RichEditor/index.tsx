@@ -1,43 +1,32 @@
 import { EditorProvider } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
+import InlineActionsMenu from "./Components/InlineActionsMenu";
+import BlockActionsMenu from "./Components/BlockActionsMenu";
 import classes from "./style.module.css";
-import InlineActionsMenu from "./InlineActionsMenu";
-import BlockActionsMenu from "./BlockActionsMenu";
-import Underline from "@tiptap/extension-underline";
-import Placeholder from "@tiptap/extension-placeholder";
-import Image from "@tiptap/extension-image";
-import Youtube from "@tiptap/extension-youtube";
-
-const PlaceholderExtension = Placeholder.configure({
-  placeholder: "Type something...",
-  emptyEditorClass: classes.placeholder,
-  considerAnyAsEmpty: true,
-  showOnlyWhenEditable: true,
-});
-
-const YoutubeExtension = Youtube.configure({
-  disableKBcontrols: true,
-  modestBranding: false,
-  controls: false,
-});
-
-const extensions = [
-  StarterKit,
-  PlaceholderExtension,
-  Underline,
-  Image,
-  YoutubeExtension,
-];
+import extensions from "./Extensions";
+import { useEffect, useState } from "react";
 
 const content = "";
 
 const RichEditor = () => {
+  const [isReady, setIsReady] = useState(false);
+
+  const onCreate = () => {
+    setIsReady(true);
+  };
+
+  useEffect(() => {
+    console.log("editor", isReady);
+  }, [isReady]);
+
   return (
     <EditorProvider
-      autofocus="start"
       editorProps={{ attributes: { class: classes.editor } }}
       extensions={extensions}
       content={content}
+      onBeforeCreate={() => {
+        console.log("before create");
+      }}
+      onCreate={onCreate}
     >
       <InlineActionsMenu />
       <BlockActionsMenu />
