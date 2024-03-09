@@ -1,7 +1,12 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Button from "../../../../Button";
 import Dialog, { DialogProps } from "../../../../Dialog";
 import Input from "../../../../Input";
+import useDebounce from "../../../../../hooks/useDebounce";
+import GridGallery from "./GridGallery";
+import imageService from "../../../../../services/ImageService";
+import { Images } from "../../../../../services/ImageService/types";
+import classes from "./style.module.css";
 
 interface InsertImageDialogProps {
   dialogProps: Omit<DialogProps, "children">;
@@ -12,20 +17,54 @@ const InsertImageDialog: FC<InsertImageDialogProps> = ({
   dialogProps,
   onSuccess,
 }) => {
-  const [value, setValue] = useState("https://picsum.photos/1200/300");
+  const [loading, setLoading] = useState(true);
+  const [value, setValue] = useState("");
+  const [images, setImages] = useState<Images>([]);
+  const debouncedValue = useDebounce(value);
+
+  // listen to keyword change with debounce and query
+  useEffect(() => {
+    if (!dialogProps.isOpen) {
+      return;
+    }
+
+    const search = async () => {
+      setLoading(true);
+      const data = await imageService.search.getPhotos({
+        query: debouncedValue || "random",
+        perPage: 20,
+      });
+
+      setImages(data.response?.results);
+      setLoading(false);
+    };
+
+    search();
+  }, [debouncedValue, dialogProps.isOpen]);
+
+  // reset state variables on unmount
+  useEffect(() => {
+    return () => {
+      setImages([]);
+      setValue("");
+      setLoading(true);
+    };
+  }, [dialogProps.isOpen]);
 
   return (
-    <Dialog {...dialogProps}>
+    <Dialog {...dialogProps} className={classes.insertImageDialog}>
+      <Button onClick={dialogProps?.onClose} className={classes.closeButton}>
+        X
+      </Button>
+
       <Input
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className="mb-2"
-        placeholder="Image URL"
+        className={classes.searchInput}
+        placeholder="Keyword"
       />
-      <div className="grid grid-cols-2 gap-2">
-        <Button onClick={dialogProps?.onClose}>Cancel</Button>
-        <Button onClick={() => onSuccess(value)}>Submit</Button>
-      </div>
+
+      <GridGallery images={images} onSelect={onSuccess} loading={loading} />
     </Dialog>
   );
 };

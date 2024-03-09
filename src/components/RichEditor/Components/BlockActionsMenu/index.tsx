@@ -88,7 +88,7 @@ const BlockActionsMenu = () => {
 
       <InsertImageDialog
         dialogProps={{
-          title: "Insert Image by URL",
+          title: "Find image by keyword",
           isOpen: imageDialogOpen,
           onClose: () => setImageDialogOpen(false),
         }}

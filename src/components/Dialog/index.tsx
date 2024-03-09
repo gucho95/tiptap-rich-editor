@@ -1,4 +1,5 @@
 import { Dialog as HeadlessDialog, Transition } from "@headlessui/react";
+import clsx from "clsx";
 import { FC, Fragment, ReactNode } from "react";
 
 export interface DialogProps {
@@ -6,9 +7,16 @@ export interface DialogProps {
   onClose?: () => void;
   isOpen: boolean;
   children: ReactNode;
+  className?: string;
 }
 
-const Dialog: FC<DialogProps> = ({ isOpen, onClose, children, title }) => {
+const Dialog: FC<DialogProps> = ({
+  isOpen,
+  onClose,
+  children,
+  title,
+  className,
+}) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <HeadlessDialog
@@ -39,7 +47,12 @@ const Dialog: FC<DialogProps> = ({ isOpen, onClose, children, title }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <HeadlessDialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+              <HeadlessDialog.Panel
+                className={clsx(
+                  "w-full max-w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all",
+                  className
+                )}
+              >
                 {title ? (
                   <HeadlessDialog.Title
                     as="h3"
