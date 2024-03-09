@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Images } from "../../../../../services/ImageService/types";
 import classes from "./style.module.css";
 import clsx from "clsx";
+import Button from "../../../../Button";
 
 type GridGalleryProps = {
   images: Images;
@@ -29,12 +30,20 @@ const GridGallery: FC<GridGalleryProps> = ({ images, onSelect, loading }) => {
   return (
     <div className={classes.gridContainer}>
       {images?.map((image) => (
-        <img
-          key={image.id}
-          src={image.urls.thumb}
-          className={classes.gridItem}
-          onClick={() => onSelect(image.urls.regular)}
-        />
+        <div className={clsx(classes.gridItem, "group")}>
+          <div
+            className={clsx(classes.gridItemOverlay, "group-hover:opacity-100")}
+          >
+            <Button onClick={() => onSelect(image.urls.regular)}>
+              Click to select
+            </Button>
+          </div>
+          <img
+            key={image.id}
+            src={image.urls.thumb}
+            className={classes.gridItemImg}
+          />
+        </div>
       ))}
     </div>
   );

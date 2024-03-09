@@ -15,7 +15,15 @@
 }
 
 .gridItem {
-  @apply w-full h-60 object-cover object-center rounded-xl;
+  @apply w-full h-60 rounded-xl relative;
+}
+
+.gridItemOverlay {
+  @apply absolute bg-black/50 inset-0 opacity-0 z-10 flex justify-center items-center;
+}
+
+.gridItemImg {
+  @apply object-cover object-center h-full w-full;
 }
 
 .skeletonItem {

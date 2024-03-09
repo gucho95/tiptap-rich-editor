@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import ImageIcon from "./Icons/Image";
 import YoutubeIcon from "./Icons/Youtube";
+import GifIcon from "./Icons/Gif";
 
 export const getBlockActions = ({
   onMenuClose,
@@ -13,7 +14,7 @@ export const getBlockActions = ({
 }) => [
   {
     name: "image",
-    title: "Insert Image by URL",
+    title: "Insert Image",
     icon: <ImageIcon />,
     onSelect: () => {
       onMenuClose();
@@ -22,11 +23,19 @@ export const getBlockActions = ({
   },
   {
     name: "youtube embed",
-    title: "Insert Youtube Embed",
+    title: "Insert Youtube Video",
     icon: <YoutubeIcon />,
     onSelect: () => {
       onMenuClose();
       setYoutubeDialogOpen(true);
+    },
+  },
+  {
+    name: "gif",
+    title: "Insert GIF",
+    icon: <GifIcon />,
+    onSelect: () => {
+      onMenuClose();
     },
   },
 ];

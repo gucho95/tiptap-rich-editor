@@ -17,7 +17,7 @@ const FormattingMenu = () => {
     return editor ? getMenuActions({ editor, setLinkDialogVisible }) : [];
   }, [editor]);
 
-  // show only when there is text selected
+  // show menu only when there is text selected
   const shoudShow = (state: EditorState, view: EditorView): boolean => {
     const { from, to } = view.state.selection;
     const text = state.doc.textBetween(from, to, "");
