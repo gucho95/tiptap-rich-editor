@@ -1,13 +1,6 @@
 import { Editor, FloatingMenu, useCurrentEditor } from "@tiptap/react";
 import classes from "./style.module.css";
-import {
-  Dispatch,
-  Fragment,
-  SetStateAction,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 import MenuTrigger from "./MenuTrigger";
 import ImageIcon from "./Icons/Image";
 import YoutubeIcon from "./Icons/Youtube";
@@ -54,6 +47,7 @@ const BlockActionsMenu = () => {
   const [youtubeDialogOpen, setYoutubeDialogOpen] = useState(false);
 
   const { editor } = useCurrentEditor();
+  const isEditorFocused = editor?.isFocused;
 
   // TODO: move this logic to parent component
   useEffect(() => {
@@ -81,11 +75,18 @@ const BlockActionsMenu = () => {
 
   // Close menu on selection update
   useEffect(() => {
-    editor?.on("selectionUpdate", onMenuClose);
+    if (menuOpen) {
+      editor?.on("selectionUpdate", onMenuClose);
+      editor?.on("blur", onMenuClose);
+    }
+
     return () => {
-      editor?.off("selectionUpdate", onMenuClose);
+      if (menuOpen) {
+        editor?.off("selectionUpdate", onMenuClose);
+        editor?.off("blur", onMenuClose);
+      }
     };
-  }, [editor]);
+  }, [editor, menuOpen]);
 
   // Hide caret when menu is open
   useEffect(() => {
@@ -101,21 +102,22 @@ const BlockActionsMenu = () => {
   }, [menuOpen]);
 
   return (
-    <Fragment>
+    <div>
       <FloatingMenu
         tippyOptions={{ placement: "left-start" }}
-        className={classes.inlineActionsMenu}
+        className={classes.formattingMenu}
       >
         <MenuTrigger
           menuOpen={menuOpen}
           onMenuClose={onMenuClose}
           onMenuOpen={onMenuOpen}
+          isEditorFocused={isEditorFocused}
         />
       </FloatingMenu>
 
       <FloatingMenu tippyOptions={{ placement: "right-start" }}>
         <div className="-mt-1.5 -ml-3 bg-white">
-          {menuOpen && <Menu actions={actions} />}
+          {menuOpen && isEditorFocused && <Menu actions={actions} />}
         </div>
       </FloatingMenu>
 
@@ -142,7 +144,7 @@ const BlockActionsMenu = () => {
           editor?.chain().focus().setYoutubeVideo({ src }).run();
         }}
       />
-    </Fragment>
+    </div>
   );
 };
 

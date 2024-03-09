@@ -3,7 +3,7 @@ export type FormattingMenuAction = {
   title?: string;
   icon: React.ReactNode;
   onSelect: (name: string) => void;
-  selected: boolean;
+  selected: () => boolean;
   borderAfter?: boolean;
   borderBefore?: boolean;
 };

@@ -1,12 +1,12 @@
 import { FC, Fragment, MouseEvent } from "react";
-import classes from "./style.module.css";
 import { FormattingMenuAction } from "../../types";
+import classes from "./style.module.css";
 import clsx from "clsx";
 
 interface MenuItemProps extends FormattingMenuAction {}
 
-const VerticalBorder = () => {
-  return <span className="border-[0.25px] border-black/10 rounded-full" />;
+const VerticalDivider = () => {
+  return <span className={classes.verticalDivider} />;
 };
 
 const MenuItem: FC<MenuItemProps> = ({
@@ -25,18 +25,18 @@ const MenuItem: FC<MenuItemProps> = ({
 
   return (
     <Fragment>
-      {borderBefore && <VerticalBorder />}
+      {borderBefore && <VerticalDivider />}
 
       <button
         className={clsx(classes.menuButton, {
-          [classes.menuButtonSelected]: selected,
+          [classes.menuButtonSelected]: selected?.(),
         })}
         onMouseDown={onMouseDown}
         title={title}
       >
         <span className={classes.menuButtonIcon}>{icon}</span>
       </button>
-      {borderAfter && <VerticalBorder />}
+      {borderAfter && <VerticalDivider />}
     </Fragment>
   );
 };

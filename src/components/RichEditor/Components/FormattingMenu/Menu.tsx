@@ -8,7 +8,6 @@ type MenuProps = {
 };
 
 const Menu: FC<MenuProps> = ({ actions }) => {
-  console.log("actions", actions);
   return (
     <div className={classes.formattingMenu}>
       {actions.map((action) => (

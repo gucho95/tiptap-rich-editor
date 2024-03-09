@@ -4,6 +4,7 @@ import YoutubeExtension from "./Youtube";
 import PlaceholderExtension from "./Placeholder";
 import ImageExtension from "@tiptap/extension-image";
 import StarterKitExtension from "./StarterKit";
+import LinkExtension from "./Link";
 
 const extensions: Extensions = [
   StarterKitExtension,
@@ -11,6 +12,7 @@ const extensions: Extensions = [
   UnderlineExtension,
   ImageExtension,
   YoutubeExtension,
+  LinkExtension,
 ];
 
 export default extensions;

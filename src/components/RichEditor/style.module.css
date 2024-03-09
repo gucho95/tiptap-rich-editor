@@ -1,9 +1,9 @@
 .editor {
-  @apply focus:outline-none leading-10 pl-14;
+  @apply focus:outline-none leading-10 px-14 py-4 bg-purple-100/20 rounded-xl;
 }
 
 .placeholder::before {
-  @apply content-[attr(data-placeholder)] float-left h-0 pointer-events-none text-gray-200;
+  @apply content-[attr(data-placeholder)] float-left h-0 pointer-events-none text-black/30;
 }
 
 .editor iframe {
@@ -36,4 +36,7 @@
 
 .editor li {
   @apply list-item;
+}
+.editor a {
+  @apply underline;
 }

@@ -1,5 +1,5 @@
 .formattingMenuWrapper {
-  @apply p-2 bg-purple-100 shadow-2xl transition-all rounded-lg shadow-purple-200/50;
+  @apply p-2 bg-purple-300 shadow-2xl transition-all rounded-lg shadow-purple-200/50;
 }
 
 .formattingMenu {
@@ -7,13 +7,17 @@
 }
 
 .menuButton {
-  @apply p-1 bg-purple-200 rounded-lg hover:bg-purple-100;
+  @apply p-1 rounded-lg hover:bg-white/20 text-black/50 fill-current;
 }
 
 .menuButtonSelected {
-  @apply bg-purple-300 hover:bg-purple-300;
+  @apply bg-white/20;
 }
 
 .menuButtonIcon {
   @apply w-6 h-6 block;
+}
+
+.verticalDivider {
+  @apply border-[0.25px] border-black/5 rounded-full;
 }
