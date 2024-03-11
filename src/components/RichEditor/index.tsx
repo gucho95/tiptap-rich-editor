@@ -4,10 +4,14 @@ import FormattingMenu from "./Components/FormattingMenu";
 import extensions from "./Extensions";
 import classes from "./style.module.css";
 import { useState } from "react";
+import Button from "../Button";
 
 const RichEditor = () => {
   const [content, setContent] = useState({});
-  console.log("content", content);
+
+  const onConsole = () => {
+    console.log("content", content);
+  };
 
   return (
     <EditorProvider
@@ -18,6 +22,9 @@ const RichEditor = () => {
     >
       <FormattingMenu />
       <BlockActionsMenu />
+      <div className="flex justify-end mt-2" onClick={onConsole}>
+        <Button>Console JSON</Button>
+      </div>
     </EditorProvider>
   );
 };
