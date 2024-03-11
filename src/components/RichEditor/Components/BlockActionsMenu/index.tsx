@@ -7,12 +7,14 @@ import Menu from "../FormattingMenu/Menu";
 import { getBlockActions } from "./Actions";
 import classes from "./style.module.css";
 import InsertGifDialog from "./InsertGifDialog";
+import InsertVideoDialog from "./InsertVideoDialog";
 
 const BlockActionsMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [imageDialogOpen, setImageDialogOpen] = useState(false);
   const [youtubeDialogOpen, setYoutubeDialogOpen] = useState(false);
   const [gifDialogOpen, setGifDialogOpen] = useState(false);
+  const [videoDialogOpen, setVideoDialogOpen] = useState(false);
 
   const { editor } = useCurrentEditor();
   const isEditorFocused = editor?.isFocused;
@@ -36,6 +38,7 @@ const BlockActionsMenu = () => {
       setImageDialogOpen,
       setYoutubeDialogOpen,
       setGifDialogOpen,
+      setVideoDialogOpen,
     });
   }, []);
 
@@ -122,6 +125,21 @@ const BlockActionsMenu = () => {
         onSuccess={(src: string) => {
           setGifDialogOpen(false);
           editor?.chain().focus().setImage({ src }).run();
+        }}
+      />
+      <InsertVideoDialog
+        dialogProps={{
+          title: "Insert Video",
+          isOpen: videoDialogOpen,
+          onClose: () => setVideoDialogOpen(false),
+        }}
+        onSuccess={(src: string) => {
+          setVideoDialogOpen(false);
+          editor
+            ?.chain()
+            .focus()
+            .insertContent(`<video src="${src}"></video>`)
+            .run();
         }}
       />
     </div>

@@ -5,6 +5,7 @@ import PlaceholderExtension from "./Placeholder";
 import ImageExtension from "@tiptap/extension-image";
 import StarterKitExtension from "./StarterKit";
 import LinkExtension from "./Link";
+import VideoExtension from "./Video";
 
 const extensions: Extensions = [
   StarterKitExtension,
@@ -13,6 +14,7 @@ const extensions: Extensions = [
   ImageExtension,
   YoutubeExtension,
   LinkExtension,
+  VideoExtension,
 ];
 
 export default extensions;

@@ -3,15 +3,18 @@ import BlockActionsMenu from "./Components/BlockActionsMenu";
 import FormattingMenu from "./Components/FormattingMenu";
 import extensions from "./Extensions";
 import classes from "./style.module.css";
-
-const content = "";
+import { useState } from "react";
 
 const RichEditor = () => {
+  const [content, setContent] = useState({});
+  console.log("content", content);
+
   return (
     <EditorProvider
       editorProps={{ attributes: { class: classes.editor } }}
       extensions={extensions}
-      content={content}
+      content={""}
+      onUpdate={({ editor }) => setContent(editor.getJSON())}
     >
       <FormattingMenu />
       <BlockActionsMenu />
