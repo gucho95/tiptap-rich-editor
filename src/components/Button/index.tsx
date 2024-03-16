@@ -6,9 +6,9 @@ const DEFAULT_CLASSES =
   "flex-shrink-0 active:opacity-75 active:scale-[0.95] hover:opacity-90 rounded-lg text-sm transition-all";
 
 const VARIANT_CLASSES = {
-  [ButtonVariant.PRIMARY]: "bg-purple-500 text-white disabled:bg-purple-100",
+  [ButtonVariant.PRIMARY]: "bg-black/70 text-white disabled:bg-purple-100",
   [ButtonVariant.SECONDARY]:
-    "bg-white text-purple-500 border-[1px] border-purple-500 hover:bg-purple-500 hover:text-white hover:border-purple-500",
+    "bg-white text-black/70 border-[1px] border-black/70 hover:bg-black/70 hover:text-white hover:border-black/70",
   [ButtonVariant.LINK]:
     "bg-white text-blue-light hover:underline disabled:text-blue-dark disabled:no-underline",
   [ButtonVariant.DANGER]:

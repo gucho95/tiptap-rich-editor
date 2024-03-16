@@ -1,5 +1,5 @@
 .input {
-  @apply w-full ring-purple-200 ring-1 focus:ring-purple-500 rounded-lg h-16 placeholder:text-black/50 focus:outline-none;
+  @apply w-full ring-black/50 ring-1 focus:ring-black/70 rounded-lg h-16 placeholder:text-black/50 focus:outline-none;
 }
 
 .inputError {

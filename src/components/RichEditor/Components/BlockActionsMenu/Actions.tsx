@@ -19,7 +19,7 @@ export const getBlockActions = ({
 }) => [
   {
     name: "image",
-    title: "Insert Image",
+    title: "Insert image",
     icon: <ImageIcon />,
     onSelect: () => {
       onMenuClose();
@@ -28,7 +28,7 @@ export const getBlockActions = ({
   },
   {
     name: "gif",
-    title: "Insert GIF",
+    title: "Insert gif",
     icon: <GifIcon />,
     onSelect: () => {
       onMenuClose();
@@ -37,7 +37,7 @@ export const getBlockActions = ({
   },
   {
     name: "youtube embed",
-    title: "Insert Youtube Video",
+    title: "Insert youtube video by ur",
     icon: <YoutubeIcon />,
     onSelect: () => {
       onMenuClose();
@@ -47,7 +47,7 @@ export const getBlockActions = ({
 
   {
     name: "video",
-    title: "Insert Video",
+    title: "Insert video by url",
     icon: <VideoIcon />,
     onSelect: () => {
       onMenuClose();

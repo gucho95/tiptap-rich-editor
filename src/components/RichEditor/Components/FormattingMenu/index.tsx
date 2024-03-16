@@ -7,6 +7,7 @@ import InsertLinkDialog from "./InserLinkDialog";
 import { getMenuActions } from "./Actions";
 import Menu from "../../../Menu";
 import classes from "./style.module.css";
+import { Transition } from "@headlessui/react";
 
 const FormattingMenu = () => {
   const { editor } = useCurrentEditor();
@@ -40,7 +41,11 @@ const FormattingMenu = () => {
         className={clsx(classes.formattingMenuWrapper, {
           "opacity-0": linkDialogVisible,
         })}
-        tippyOptions={{ maxWidth: "100%", placement: "auto" }}
+        tippyOptions={{
+          maxWidth: "100%",
+          placement: "bottom-start",
+          moveTransition: "transform 0.1s linear",
+        }}
         shouldShow={({ editor }) => shoudShow(editor.state, editor.view)}
       >
         <Menu actions={actions} />

@@ -8,6 +8,7 @@ import { getBlockActions } from "./Actions";
 import classes from "./style.module.css";
 import InsertGifDialog from "./InsertGifDialog";
 import InsertVideoDialog from "./InsertVideoDialog";
+import { Transition } from "@headlessui/react";
 
 const BlockActionsMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -85,11 +86,19 @@ const BlockActionsMenu = () => {
         tippyOptions={{ placement: "right-start" }}
         className={classes.menuWrapper}
       >
-        {menuOpen && isEditorFocused && (
-          <div className="p-2">
-            <Menu actions={actions} />
-          </div>
-        )}
+        <Transition
+          appear
+          show={menuOpen && isEditorFocused}
+          enter="ease-in duration-100"
+          enterFrom="opacity-0 -translate-x-10"
+          enterTo="opacity-100 translate-x-0"
+          leave="ease-in duration-100"
+          leaveFrom="opacity-100 translate-x-0"
+          leaveTo="opacity-0 -translate-x-10"
+          className={classes.menuTransition}
+        >
+          <Menu actions={actions} />
+        </Transition>
       </FloatingMenu>
 
       <InsertImageDialog

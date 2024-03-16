@@ -9,7 +9,7 @@ type MenuProps = {
 
 const Menu: FC<MenuProps> = ({ actions }) => {
   return (
-    <div className={classes.formattingMenu}>
+    <div className={classes.menu}>
       {actions.map((action) => (
         <MenuItem key={action.name} {...action} />
       ))}

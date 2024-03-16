@@ -7,7 +7,7 @@
 }
 
 .closeButton {
-  @apply hover:bg-purple-200 p-1 relative  bottom-2;
+  @apply hover:bg-black/70 size-8 relative bottom-2 flex items-center justify-center;
 }
 
 .closeButton svg {

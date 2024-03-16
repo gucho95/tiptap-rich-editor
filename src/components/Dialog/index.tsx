@@ -71,10 +71,10 @@ const Dialog: FC<DialogProps> = ({
                     <Button
                       variant={ButtonVariant.CUSTOM}
                       size={ButtonSize.CUSTOM}
-                      className={classes.closeButton}
+                      className={clsx(classes.closeButton, "group")}
                       onClick={onClose}
                     >
-                      <CloseIcon />
+                      <CloseIcon className="group-hover:fill-white" />
                     </Button>
                   ) : null}
                 </div>

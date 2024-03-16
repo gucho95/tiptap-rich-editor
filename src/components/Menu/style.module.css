@@ -1,9 +1,9 @@
-.formattingMenu {
+.menu {
   @apply flex gap-2;
 }
 
 .menuButton {
-  @apply p-1 rounded-lg hover:bg-white/20 text-black/50 fill-current;
+  @apply p-1 rounded-lg hover:bg-white/20 text-white/90 fill-current;
 }
 
 .menuButtonSelected {
