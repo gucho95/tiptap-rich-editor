@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import MenuTrigger from "./MenuTrigger";
 import InsertImageDialog from "./InsertImageDialog";
 import InsertYoutubeEmbedDialog from "./InsertYoutubeEmbedDialog";
-import Menu from "../FormattingMenu/Menu";
+import Menu from "../../../Menu";
 import { getBlockActions } from "./Actions";
 import classes from "./style.module.css";
 import InsertGifDialog from "./InsertGifDialog";
@@ -19,7 +19,7 @@ const BlockActionsMenu = () => {
   const { editor } = useCurrentEditor();
   const isEditorFocused = editor?.isFocused;
 
-  // TODO: move this logic to parent component
+  // TODO: move this logic to the parent component
   useEffect(() => {
     editor?.chain().focus().run();
   }, [editor]);
@@ -127,6 +127,7 @@ const BlockActionsMenu = () => {
           editor?.chain().focus().setImage({ src }).run();
         }}
       />
+
       <InsertVideoDialog
         dialogProps={{
           title: "Insert Video",

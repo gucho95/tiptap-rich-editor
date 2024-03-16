@@ -6,10 +6,6 @@
   @apply mb-2 ring-0 border-b-purple-200 border-b-[1px] rounded-none;
 }
 
-.closeButton {
-  @apply absolute top-0 right-0 select-none font-medium rounded-full !bg-red-300;
-}
-
 .gridContainer {
   @apply w-full h-full overflow-y-auto overflow-x-hidden;
 }

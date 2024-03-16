@@ -5,6 +5,7 @@ import extensions from "./Extensions";
 import classes from "./style.module.css";
 import { useState } from "react";
 import Button from "../Button";
+import { ButtonVariant } from "../Button/types";
 
 const RichEditor = () => {
   const [content, setContent] = useState({});
@@ -23,7 +24,7 @@ const RichEditor = () => {
       <FormattingMenu />
       <BlockActionsMenu />
       <div className="flex justify-end mt-2" onClick={onConsole}>
-        <Button>Console JSON</Button>
+        <Button variant={ButtonVariant.SECONDARY}>Console JSON</Button>
       </div>
     </EditorProvider>
   );

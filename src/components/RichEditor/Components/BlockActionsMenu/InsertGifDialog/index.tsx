@@ -4,7 +4,7 @@ import Dialog, { DialogProps } from "../../../../Dialog";
 import Input from "../../../../Input";
 import classes from "./style.module.css";
 import { Grid } from "@giphy/react-components";
-import gifService from "../../../../../services/GifService";
+import gifService from "../../../../../services/gifService";
 
 interface InsertGifDialogProps {
   dialogProps: Omit<DialogProps, "children">;
@@ -34,6 +34,7 @@ const InsertGifDialog: FC<InsertGifDialogProps> = ({
         onChange={(e) => setValue(e.target.value)}
         className={classes.searchInput}
         placeholder="Keyword"
+        tabIndex={1}
       />
       <div className={classes.gridContainer} ref={containerRef}>
         <Grid
@@ -48,9 +49,6 @@ const InsertGifDialog: FC<InsertGifDialogProps> = ({
           }}
         />
       </div>
-      <Button onClick={dialogProps?.onClose} className={classes.closeButton}>
-        X
-      </Button>
     </Dialog>
   );
 };

@@ -3,9 +3,9 @@ import { BubbleMenu, useCurrentEditor } from "@tiptap/react";
 import { EditorState } from "@tiptap/pm/state";
 import { EditorView } from "@tiptap/pm/view";
 import clsx from "clsx";
-import Menu from "./Menu";
 import InsertLinkDialog from "./InserLinkDialog";
 import { getMenuActions } from "./Actions";
+import Menu from "../../../Menu";
 import classes from "./style.module.css";
 
 const FormattingMenu = () => {

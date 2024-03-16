@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import Dialog, { DialogProps } from "../../../../Dialog";
 import Input from "../../../../Input";
 import Button from "../../../../Button";
+import { ButtonVariant } from "../../../../Button/types";
 
 interface InsertVideoDialogProps {
   dialogProps: Omit<DialogProps, "children">;
@@ -27,10 +28,16 @@ const InsertVideoDialog: FC<InsertVideoDialogProps> = ({
         onChange={(e) => setValue(e.target.value)}
         className="mb-2"
         placeholder="Video URL"
+        tabIndex={1}
       />
 
       <div className="grid grid-cols-2 gap-2">
-        <Button onClick={dialogProps?.onClose}>Cancel</Button>
+        <Button
+          variant={ButtonVariant.SECONDARY}
+          onClick={dialogProps?.onClose}
+        >
+          Cancel
+        </Button>
         <Button onClick={onSubmit}>Submit</Button>
       </div>
     </Dialog>

@@ -16,7 +16,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       <Fragment>
         <div className="relative">
           {components?.IconBefore ? (
-            <span className="absolute left-0 top-0 h-full flex items-center px-6 text-black-dark/50 z-0">
+            <span
+              className={clsx(classes.iconWrapper, classes.iconBeforeWrapper)}
+            >
               {components.IconBefore}
             </span>
           ) : null}
@@ -32,7 +34,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           />
 
           {components?.IconAfter ? (
-            <span className="absolute right-0 top-0 h-full flex items-center px-6 text-black-dark/50 z-0">
+            <span
+              className={clsx(classes.iconWrapper, classes.iconAfterWrapper)}
+            >
               {components.IconAfter}
             </span>
           ) : null}

@@ -1,6 +1,6 @@
 import MenuItem from "./MenuItem";
 import classes from "./style.module.css";
-import { FormattingMenuAction } from "../../types";
+import { FormattingMenuAction } from "../RichEditor/types";
 import { FC } from "react";
 
 type MenuProps = {

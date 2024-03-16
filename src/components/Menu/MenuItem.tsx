@@ -1,5 +1,5 @@
 import { FC, Fragment, MouseEvent } from "react";
-import { FormattingMenuAction } from "../../types";
+import { FormattingMenuAction } from "../RichEditor/types";
 import classes from "./style.module.css";
 import clsx from "clsx";
 
@@ -36,6 +36,7 @@ const MenuItem: FC<MenuItemProps> = ({
       >
         <span className={classes.menuButtonIcon}>{icon}</span>
       </button>
+
       {borderAfter && <VerticalDivider />}
     </Fragment>
   );

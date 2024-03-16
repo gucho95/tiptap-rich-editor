@@ -1,6 +1,10 @@
 import { Dialog as HeadlessDialog, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { FC, Fragment, ReactNode } from "react";
+import Button from "../Button";
+import classes from "./style.module.css";
+import CloseIcon from "./CloseIcon";
+import { ButtonSize, ButtonVariant } from "../Button/types";
 
 export interface DialogProps {
   title?: ReactNode;
@@ -33,7 +37,7 @@ const Dialog: FC<DialogProps> = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black/25" />
+          <div className="fixed inset-0 bg-black/50" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
@@ -49,18 +53,31 @@ const Dialog: FC<DialogProps> = ({
             >
               <HeadlessDialog.Panel
                 className={clsx(
-                  "w-full max-w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all",
+                  "w-full max-w-full transform overflow-hidden rounded-lg bg-white p-6 text-left align-middle shadow-xl transition-all",
                   className
                 )}
               >
-                {title ? (
-                  <HeadlessDialog.Title
-                    as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900 mb-4"
-                  >
-                    {title}
-                  </HeadlessDialog.Title>
-                ) : null}
+                <div className={classes.dialogHeader}>
+                  {title ? (
+                    <HeadlessDialog.Title
+                      as="h3"
+                      className={classes.dialogTitle}
+                    >
+                      {title}
+                    </HeadlessDialog.Title>
+                  ) : null}
+
+                  {onClose ? (
+                    <Button
+                      variant={ButtonVariant.CUSTOM}
+                      size={ButtonSize.CUSTOM}
+                      className={classes.closeButton}
+                      onClick={onClose}
+                    >
+                      <CloseIcon />
+                    </Button>
+                  ) : null}
+                </div>
 
                 {children}
               </HeadlessDialog.Panel>

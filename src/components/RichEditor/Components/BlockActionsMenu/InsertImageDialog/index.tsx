@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-import Button from "../../../../Button";
 import Dialog, { DialogProps } from "../../../../Dialog";
 import Input from "../../../../Input";
 import useDebounce from "../../../../../hooks/useDebounce";
@@ -58,12 +57,10 @@ const InsertImageDialog: FC<InsertImageDialogProps> = ({
         onChange={(e) => setValue(e.target.value)}
         className={classes.searchInput}
         placeholder="Keyword"
+        tabIndex={1}
       />
 
       <GridGallery images={images} onSelect={onSuccess} loading={loading} />
-      <Button onClick={dialogProps?.onClose} className={classes.closeButton}>
-        X
-      </Button>
     </Dialog>
   );
 };

@@ -1,0 +1,15 @@
+.dialogHeader {
+  @apply flex justify-between;
+}
+
+.dialogTitle {
+  @apply text-lg font-medium leading-6 text-gray-900 mb-4;
+}
+
+.closeButton {
+  @apply hover:bg-purple-200 p-1 relative  bottom-2;
+}
+
+.closeButton svg {
+  @apply size-6;
+}
