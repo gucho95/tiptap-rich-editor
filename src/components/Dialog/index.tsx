@@ -25,7 +25,7 @@ const Dialog: FC<DialogProps> = ({
     <Transition appear show={isOpen} as={Fragment}>
       <HeadlessDialog
         as="div"
-        className="relative z-10"
+        className="relative z-50"
         onClose={() => onClose?.()}
       >
         <Transition.Child

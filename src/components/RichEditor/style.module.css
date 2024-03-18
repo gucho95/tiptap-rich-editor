@@ -1,5 +1,5 @@
 .editor {
-  @apply focus:outline-none leading-10 px-14 py-4 bg-purple-100/20 rounded-xl;
+  @apply focus:outline-none leading-10 px-14 py-4 bg-purple-100/20 rounded-xl max-h-[500px] overflow-y-auto;
 }
 
 .placeholder::before {

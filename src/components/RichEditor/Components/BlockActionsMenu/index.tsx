@@ -109,7 +109,7 @@ const BlockActionsMenu = () => {
         }}
         onSuccess={(src: string) => {
           setImageDialogOpen(false);
-          editor?.chain().focus().setImage({ src }).run();
+          editor?.chain().setImage({ src }).focus().run();
         }}
       />
 

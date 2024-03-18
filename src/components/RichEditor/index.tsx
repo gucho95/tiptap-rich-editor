@@ -23,8 +23,11 @@ const RichEditor = () => {
     >
       <FormattingMenu />
       <BlockActionsMenu />
-      <div className="flex justify-end mt-2" onClick={onConsole}>
-        <Button variant={ButtonVariant.SECONDARY}>Console JSON</Button>
+
+      <div className="flex justify-end mt-2 space-x-2">
+        <Button variant={ButtonVariant.SECONDARY} onClick={onConsole}>
+          Console JSON
+        </Button>
       </div>
     </EditorProvider>
   );

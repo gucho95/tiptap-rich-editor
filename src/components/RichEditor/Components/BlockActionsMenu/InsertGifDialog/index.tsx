@@ -1,5 +1,4 @@
 import { FC, useEffect, useRef, useState } from "react";
-import Button from "../../../../Button";
 import Dialog, { DialogProps } from "../../../../Dialog";
 import Input from "../../../../Input";
 import classes from "./style.module.css";

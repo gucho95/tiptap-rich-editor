@@ -5,10 +5,14 @@ import Header from "./components/Header";
 function App() {
   return (
     <Fragment>
-      <Header />
-      <main className="w-[800px] max-w-full mt-10 mx-auto rounded-xl">
-        <RichEditor />
-      </main>
+      <div className="h-screen">
+        <Header />
+        <main>
+          <div className="w-[800px] max-w-full mx-auto rounded-xl h-full overflow-hidden mt-10">
+            <RichEditor />
+          </div>
+        </main>
+      </div>
     </Fragment>
   );
 }

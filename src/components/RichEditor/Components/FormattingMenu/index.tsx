@@ -7,7 +7,6 @@ import InsertLinkDialog from "./InserLinkDialog";
 import { getMenuActions } from "./Actions";
 import Menu from "../../../Menu";
 import classes from "./style.module.css";
-import { Transition } from "@headlessui/react";
 
 const FormattingMenu = () => {
   const { editor } = useCurrentEditor();
@@ -48,7 +47,7 @@ const FormattingMenu = () => {
         }}
         shouldShow={({ editor }) => shoudShow(editor.state, editor.view)}
       >
-        <Menu actions={actions} />
+        {editor?.isFocused ? <Menu actions={actions} /> : null}
       </BubbleMenu>
 
       <InsertLinkDialog
